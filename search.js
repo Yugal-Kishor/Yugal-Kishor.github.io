@@ -54,16 +54,16 @@ $(document).ready(function(){
 //     });
 // }
 
-// function OpenSignIn(){
-//     document.getElementById("SignIn").style.display="flex" ;
-//     document.getElementById("SignUp").style.display="none";
+ function OpenSignIn(){
+     document.getElementById("SignIn").style.display="flex" ;
+     document.getElementById("SignUp").style.display="none";
 
-// }
-// function OpenSignUp(){
-//     document.getElementById("SignIn").style.display="none";
-//     document.getElementById("SignUp").style.display="flex";
+ }
+ function OpenSignUp(){
+     document.getElementById("SignIn").style.display="none";
+     document.getElementById("SignUp").style.display="flex";
 
-// }
+ }
 
 const searchForm = document.querySelector(".searching");
 const searchFormInput = document.querySelector("#search");
