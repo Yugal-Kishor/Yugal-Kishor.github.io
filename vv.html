@@ -89,20 +89,21 @@
             display:default;
         }
         #search1 {
-            border: none;
+            border: 1px solid black;
+            border-left: none;
             margin: 0px;
             background-color: rgb(235, 117, 39);
             font-weight: 600;
             color: white;
-            padding: 7px;
-            border-radius: 5px;
+            padding: 5px;
+            
         }
         #search {
             border: none;
             width:50%;
             padding: 5px;
             border: 1px solid black;
-            border-radius: 5px;
+            border-right: none;
 
             
         }
@@ -125,7 +126,33 @@
             padding-top: 50px;
             margin-left: 100px ;
         }
-        .mic{
+        #mic {
+            padding:5px;
+            align-content: center;
+            border: none;
+            background-color: white;
+            border: 1px solid black;
+            
+        }
+        .fa-microphone-alt{
+            
+            color: red;
+        }
+        #SignOut {
+            background-color: white;
+            display: inline-flex;
+            align-content: center;
+            margin-top: 20px;
+            
+            
+
+        }
+        #signoutbtn{
+            background-color: rgb(206, 118, 19);
+            font-weight: bold;
+            margin-left: 10px;
+            border-radius: 4px;
+            color: white;
             border: none;
         }
         
@@ -175,10 +202,19 @@
             </form>
     </div>
     <div id="userdiv">
+        <div id="SignOut">
+            <i class="fas fa-user-circle fa-2x" style="color: grey;"></i>
+            <button onclick="signout()" id="signoutbtn">
+            Sign-Out
+            </button>
+        </div>
+        
+
+    
     <form class="searching">
         <div id="searchbar">
         <input type="text" placeholder="search videos ....." id="search" autocomplete="off" autofocus>
-        <button type="button" id="mic" ><img src="vo1.png" height="18px" width="10px" class=" vostart mic"></i></button>
+        <button type="button" id="mic" ><i class="fas fa-microphone"></i></button>
         <input type="submit" value="search" id="search1">
         </div>
     <div class="row">
@@ -191,8 +227,14 @@
     </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/39c54efd8e.js" crossorigin="anonymous"></script>
+
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
