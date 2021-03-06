@@ -12,7 +12,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       // No user is signed in.
       document.getElementById("userdiv").style.display="default" ;
       document.getElementById("logindiv").style.display="default";
-      console.log("Please Sign in");
+      console.log("Please Sign in. You are not signed in.");
   
     }
   });
