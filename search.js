@@ -1,4 +1,4 @@
-// User Authentication Sign In and Sign 
+// User Authentication Sign In and Sign Up
 
 
 firebase.auth().onAuthStateChanged(function(user) {
