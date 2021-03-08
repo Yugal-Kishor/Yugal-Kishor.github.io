@@ -37,7 +37,6 @@ function signup() {
       document.getElementById("userdiv").style.display="block" ;
       document.getElementById("logindiv").style.display="none";
       console.log("signed in");
-      console.log(user.displayName);
       
       } else {
         // No user is signed in.
@@ -88,6 +87,21 @@ function logout() {
   });
   
 }
+
+
+function updateProf() {
+  document.getElementById("updateContent").style.display="block";
+  
+}
+function cross() {
+  document.getElementById("updateContent").style.display="none";
+
+}
+function update() {
+  
+}
+
+
 
 // Speech Recognition (Voice Search)
 
