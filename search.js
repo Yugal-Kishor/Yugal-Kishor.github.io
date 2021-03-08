@@ -1,22 +1,55 @@
 // User Authentication Sign In and Sign Up
 
+function signup() {
+    var createUserEmail = document.getElementById("email").value;
+    var createUserPass = document.getElementById("password").value;
+    var confirmUserPass = document.getElementById("conpassword").value;
+    
+    if (createUserPass == confirmUserPass) {
+      firebase.auth().createUserWithEmailAndPassword(createUserEmail, createUserPass)
+    .then((userCredential) => {
+      // Signed in 
+      var user = userCredential.user;
+      // ...
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ..
+      window.alert("Error : " +errorMessage )  ;
 
-firebase.auth().onAuthStateChanged(function(user) {
+
+    });
+      
+    } else {
+      window.alert("Error : Password not matching")
+      
+    }
+      
+  
+    
+
+  }
+    
+  firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
-      document.getElementById("userdiv").style.display="default" ;
+      document.getElementById("userdiv").style.display="block" ;
       document.getElementById("logindiv").style.display="none";
       console.log("signed in");
-  
-    } else {
-      // No user is signed in.
-      document.getElementById("userdiv").style.display="default" ;
-      document.getElementById("logindiv").style.display="default";
-      console.log("Please Sign in. You are not signed in.");
-  
-    }
-  });
+      console.log(user.displayName);
+      
+      } else {
+        // No user is signed in.
+        document.getElementById("userdiv").style.display="none" ;
+        document.getElementById("logindiv").style.display="block";
+        console.log("Please Sign in");
+        
+      }
+    });
+   
 
+  
 function signin(){
     var userEmail = document.getElementById("email1").value;
     var userPass = document.getElementById("password1").value;
@@ -34,7 +67,7 @@ function signin(){
       var errorMessage = error.message;
       window.alert("Error : " +errorMessage )  ;
     });
-}
+  }
 
 function OpenSignIn(){
     document.getElementById("SignIn").style.display="flex" ;
@@ -45,6 +78,15 @@ function OpenSignUp(){
     document.getElementById("SignIn").style.display="none";
     document.getElementById("SignUp").style.display="flex";
 
+}
+
+function logout() {
+  firebase.auth().signOut().then(() => {
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
+  
 }
 
 // Speech Recognition (Voice Search)
