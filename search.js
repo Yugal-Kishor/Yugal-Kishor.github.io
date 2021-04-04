@@ -307,7 +307,7 @@ $(document).ready(() => {
   $(".searching").submit(function (event) {
     event.preventDefault()
     var search = $("#search").val()
-    // videoSearch(API, search, 9)
+    videoSearch(API, search, 9)
     document.getElementById("videos").style.display="flex";
     $("#searchresult").text("search results for : "+search)
 
