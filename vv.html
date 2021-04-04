@@ -29,6 +29,10 @@
             margin: auto;
             margin-top: 100px;
             max-width: 400px;
+            padding: 50px;
+            border: 2px solid black;
+            border-radius: 10px;
+            box-shadow: 0 0 8px gray;
             
 
         }
@@ -47,13 +51,7 @@
             background-color: rgb(64, 187, 224);
 
         }
-        #SignIn,#SignUp{
-            padding: 50px;
-            border: 2px solid black;
-            border-radius: 10px;
-            box-shadow: 0 0 8px gray;
-
-        }
+       
         .inputclass1>input,.inputclass2>input{
             width: 90%;
             border: 2px solid gray;
@@ -116,7 +114,9 @@
             background-color: red;
         }
         #search:hover{
-            border:2px solid rgb(173, 115, 26) ;
+            border:1px solid rgb(173, 115, 26) ;
+            box-shadow: inset 0 0 3px grey;
+
         }
         #searchbar{
             display: flex;
@@ -126,10 +126,16 @@
             margin-top: 100px;
             max-width: 800px;
             
+            
         }
         #videos{
-            padding-top: 50px;
-            margin-left: 100px ;
+            
+            display: none;
+            border: none;
+            flex-direction: row;
+            overflow-x: scroll;
+            margin-top: 20px;
+            
         }
         #mic {
             padding:5px;
@@ -137,6 +143,11 @@
             border: none;
             background-color: white;
             border: 1px solid black;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px;
             
         }
         .fa-microphone-alt{
@@ -193,11 +204,12 @@
             display: none;
             border-radius: 10px;
             background-color: white;
+        
             
 
         }
-        #name{
-            width: 90%;
+        #name,#number1{
+            width: 50%;
             border-radius: 5px;
         }
         #update{
@@ -217,14 +229,82 @@
             top: 5px;
             right: 5px;
         }
-        #name:hover{
+        #name:hover,#number1:hover{
             box-shadow: inset 0 0 3px grey;
         }
         #update:hover{
             background-color: #2fd072;
         }
-        
-        
+        .videocont{
+            border: none;
+            background-color: white;
+        }
+        .cat-container {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            
+
+            
+        }
+        #form{
+            display: flex;
+            flex-direction: row;
+            
+        }
+
+        .cat-box {
+            border-radius: 0px;
+            border: 1px solid black;
+            margin: 3px;
+            padding: 3px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .container>button {
+            
+            border: hidden;
+            cursor: pointer;
+            align-items: center;
+            font-weight: bold;
+            background-color: white;
+
+            
+            
+        }
+        .btn{
+            border: none;
+            background-color: brown;
+            color: white;
+            margin-left: 5px;
+            
+        }
+        #catg{
+            border-radius: 0px;
+            border: 1px solid black;
+            padding: 2px;
+            width: 100px;
+            
+        }
+        #catg:hover{
+            box-shadow: inset 0 0 3px grey;
+        }
+        .fa-trash{
+            color: red;
+            display: inline !important;
+            
+        }
+        .btn:hover{
+            background-color: blueviolet;
+        }
+        .catDiv{
+            display: inline !important;
+            
+        }
+
         
 
        
@@ -264,10 +344,11 @@
                 </div>
                 <button type="button" class="button2" id="signupbutton" onclick="signup()">Sign-Up</button>
             </form>
-    </div>
+        </div>
     </div>
 
     <div id="userdiv">
+        <hr>
         <div id="welcome">
             <i class="fas fa-user-circle fa-2x"></i>
             <span id="welcomeUser">Welcome</span>
@@ -277,31 +358,49 @@
             <button type="button" onclick="updateProf()" id="updateProf">Update Profile</button>
             <div id="updateContent">
                 <button type="button" onclick="cross()" id="cross"><i class="far fa-times-circle fa-2x"></i></button>
-                <label for="name">Profile Name:</label>
-                <input type="text" name="name" id="name"><br><br>
-                <label for="picture">Profile Picture:</label>
-                <input type="file" name="picture" id="picture"><br><br>
-                <button type="button" onclick="update()" id="update">Update</button>
-
+                <form id="uform">
+                    <label for="name">Profile Name:</label>
+                    <input type="text" name="name" id="name"><br><br>
+                    <label for="number1">Contact No.:</label>
+                    <input type="number" name="number" id="number1"><br><br>
+                    <button type="button" onclick="update1()" id="update">Update</button>
+                </form>
             </div>
         </div>
+        <hr>
         
 
     
     <form class="searching">
         <div id="searchbar">
-        <input type="text" placeholder="search videos ....." id="search" autocomplete="off" autofocus>
-        <button type="button" id="mic" ><i class="fas fa-microphone"></i></button>
-        <input type="submit" value="search" id="search1">
+            <input type="text" placeholder="search videos ....." id="search" autocomplete="off" autofocus required>
+            <button type="button" id="mic" ><i class="fas fa-microphone"></i></button>
+            <input type="submit" value="search" id="search1">
         </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div id="videos">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="searchresult">
 
+                </div>
+                <div id="videos">
+
+                </div>
             </div>
         </div>
-    </div>
     </form>
+        <br><br>
+
+        <div class="container">
+            <form autocomplete="off" class="form-group" id="form">
+                <input type="text" class="form-control" id="catg" placeholder="--add category--" required><br>
+                <button type="submit" class="btn btn-success btn-block"><i class="fas fa-plus"></i></button>
+            </form>
+        </div><br>
+    
+        
+        <div class="container cat-container" id="cat-container">
+    
+        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/39c54efd8e.js" crossorigin="anonymous"></script>
@@ -311,6 +410,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
 
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -323,6 +423,7 @@
   var firebaseConfig = {
     apiKey: "AIzaSyCc46nkGOvb9KNwJv6XXj81afsBFOxSAXo",
     authDomain: "videosearch-306108.firebaseapp.com",
+    databaseURL: "https://videosearch-306108-default-rtdb.firebaseio.com",
     projectId: "videosearch-306108",
     storageBucket: "videosearch-306108.appspot.com",
     messagingSenderId: "472971737779",
@@ -332,6 +433,10 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+
+    const auth = firebase.auth();
+    const fs = firebase.firestore();
+    const db = firebase.database();
 </script>
 
 <script src="search.js"></script>
